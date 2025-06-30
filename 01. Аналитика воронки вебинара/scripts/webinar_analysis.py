@@ -7,7 +7,7 @@ import seaborn as sns
 palette_custom = ["#dad7cd", "#a3b18a", "#588157", "#3a5a40", "#344e41"]
 
 # ===== ЗАГРУЗКА ДАННЫХ =====
-df = pd.read_csv("webinar_user_events.csv", sep=";")
+df = pd.read_csv("/Users/nikitakaravaev/Documents/projects/Portfolio/01. Аналитика воронки вебинара/data/webinar_user_events.csv", sep=";")
 df['created_at'] = pd.to_datetime(df['created_at'], format="%d.%m.%Y %H:%M")
 
 # ===== ВОРОНКА =====
