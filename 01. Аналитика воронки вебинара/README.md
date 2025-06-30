@@ -126,14 +126,14 @@ plt.show()
 ```text
 Аналитика воронки вебинара
 ├── README.md
-├── data/
-    └── webinar_user_events.csv      # данные
+├── data/				# данные
+    └── webinar_user_events.csv      
 ├── images/                    		 # графики
    └── conversion_funnel.png
    └── duration_vs_conversion.png
-├── scripts/
-	└── webinar_analysis.ipynb      # основной анализ
+├── scripts/      			# основной анализ
+	└── webinar_analysis.ipynb
 	└── webinar_analysis.py
-├── view/
-    └── Webinar_report.pdf          # итоговый отчет
+├── view/          			# итоговый отчет
+    └── Webinar_report.pdf
  ```
