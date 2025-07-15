@@ -17,8 +17,8 @@ df['Ship Date'] = pd.to_datetime(df['Ship Date'])
 sales_by_category = df.groupby('Category')['Sales'].sum()
 profit_by_category = df.groupby('Category')['Profit'].sum()
 
-sales_by_region = df.groupby('Region')['Sales'].sum()
-profit_by_region = df.groupby('Region')['Profit'].sum()
+sales_by_region = df.groupby(['City', 'Region'])['Sales'].sum()
+profit_by_region = df.groupby(['City', 'Region'])['Profit'].sum()
 
 df['Month'] = df['Order Date'].dt.to_period('M')
 monthly_sales = df.groupby('Month')['Sales'].sum()
