@@ -43,8 +43,8 @@ coords_df.reset_index(inplace=True)
 df = df.merge(coords_df, on='City', how='left')
 
 # Группируем данные для дальнейшего анализа
-sales_by_category = df.groupby('Category')['Sales'].sum()
-profit_by_category = df.groupby('Category')['Profit'].sum()
+sales_by_category = df.groupby(['Order Date','Category'])['Sales'].sum()
+profit_by_category = df.groupby(['Order Date','Category'])['Profit'].sum()
 
 sales_by_region = df.groupby(['Order Date', 'City', 'Region'])['Sales'].sum()
 profit_by_region = df.groupby(['Order Date', 'City', 'Region'])['Profit'].sum()
@@ -60,7 +60,6 @@ metrics_by_category.to_csv('metrics_by_category.csv')
 
 metrics_by_region = df.groupby(['Order Date', 'City', 'Region', 'Latitude', 'Longitude'])[['Sales', 'Profit']].sum().reset_index()
 metrics_by_region.to_csv('metrics_by_region.csv', index=False)
-print("Файл 'metrics_by_region.csv' сохранён — содержит даты, города и координаты.")
 
 monthly_metrics = pd.concat([monthly_sales, monthly_profit], axis=1)
 monthly_metrics.columns = ['Sales', 'Profit']
