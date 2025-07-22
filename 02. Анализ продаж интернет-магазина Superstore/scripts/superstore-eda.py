@@ -32,7 +32,7 @@ for city in cities:
             city_coords[city] = (None, None)
     except:
         city_coords[city] = (None, None)
-    sleep(1)  # обязательная задержка
+    sleep(0.5)  # обязательная задержка
 
 # Преобразуем в DataFrame
 coords_df = pd.DataFrame.from_dict(city_coords, orient='index', columns=['Latitude', 'Longitude'])
@@ -49,9 +49,8 @@ profit_by_category = df.groupby(['Order Date','Category'])['Profit'].sum()
 sales_by_region = df.groupby(['Order Date', 'City', 'Region'])['Sales'].sum()
 profit_by_region = df.groupby(['Order Date', 'City', 'Region'])['Profit'].sum()
 
-df['Month'] = df['Order Date'].dt.to_period('M')
-monthly_sales = df.groupby('Month')['Sales'].sum()
-monthly_profit = df.groupby('Month')['Profit'].sum()
+monthly_sales = df.groupby('Order Date')['Sales'].sum()
+monthly_profit = df.groupby('Order Date')['Profit'].sum()
 
 # Объединяем таблицы и сохраняем
 metrics_by_category = pd.concat([sales_by_category, profit_by_category], axis=1)
